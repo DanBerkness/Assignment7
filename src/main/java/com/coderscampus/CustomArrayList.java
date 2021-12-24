@@ -50,4 +50,26 @@ public class CustomArrayList<T> implements CustomList<T> {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+		 if (index <= items.length ) {
+			 if (items[index] != null) {
+				 T displacedItem = (T) items[index];
+				 items[index + 1] = displacedItem;
+				 if (items[index + 1] != null) {
+//					 THe above loop may have to be a while, or this could go on for ever...I think???
+				 }
+			 }
+		 }
+		
+		return false;
+	}
+
+	@Override
+	public T remove(int index) throws IndexOutOfBoundsException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
