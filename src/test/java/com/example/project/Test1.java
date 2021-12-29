@@ -6,6 +6,6 @@ public class Test1<T> {
 	@Test
 	private void find_apis () {
 		T allGenerics;
-		allGenerics.
+	
 	}
 }
