@@ -8,21 +8,12 @@ public class App {
   public void launch(){
 		
 			CustomList<Integer> myCustomList = new CustomArrayList<>();
+			int addCounter = 0;
+			for (int i = 0; i < 10; i++) {
+				myCustomList.add(addCounter++);
+			}
 			
-			myCustomList.add(0, 0);
-			myCustomList.add(1, 1);
-			myCustomList.add(2, 2);
-			myCustomList.add(3, 3);
-			myCustomList.add(4, 4);
-			myCustomList.add(5, 5);
-			myCustomList.add(6, 6);
-			myCustomList.add(7, 7);
-			myCustomList.add(8, 8);
-			myCustomList.add(9, 9);
-			myCustomList.add(10, 10);
-			myCustomList.add(11, 11);
-			myCustomList.add(0, 30);
-			myCustomList.add(100, 7);
+			myCustomList.add(0, 39);
 			
 					
 			System.out.println("The new array size is " + myCustomList.getSize());

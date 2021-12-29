@@ -5,55 +5,51 @@ import java.util.Arrays;
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 	int largerSize = 20;
-	int actualSizeCtr = 0;
+	int sizeOfArray = 0;
 
 	@Override
 	public int getSize() {
-		return actualSizeCtr;
+		return sizeOfArray;
 	}
 
 	@Override
 	public T get(int index) {
 
-		T item = (T) items[index];
-
-		return item;
+		return (T) items[index];
 	}
 
 	@Override
 	public boolean add(T item) {
-		if (actualSizeCtr == items.length) {
+		if (sizeOfArray == items.length) {
 			items = Arrays.copyOf(items, items.length * 2);
 		}
-		items[actualSizeCtr] = item;
-		actualSizeCtr++;
+		items[sizeOfArray] = item;
+		sizeOfArray++;
 		return true;
 	}
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		T displacedItem = null;
-		if (index < items.length) {
-			if (items[index] != null) {
-				displacedItem = (T) items[index];
-				items[index] = item;
-				item = displacedItem;
-				System.out.println(items[index]);
-				index++;
-			} else {
-				items[index] = item;
-			}
-		} else if (index == items.length){
-			items = Arrays.copyOf(items, items.length * 2);
+
+		if (items[index] != null) {
+			displacedItem = (T) items[index];
 			items[index] = item;
-			
-		} else if (index > items.length) {
-			while (index > items.length) {
-				items = Arrays.copyOf(items, items.length * 2);
-			}
-			items[index] = item;
+			item = displacedItem;
+			System.out.println(items[index]);
+			index++;
 		}
 
+		if (sizeOfArray == items.length) {
+			items = Arrays.copyOf(items, items.length * 2);
+			items[index] = item;
+			sizeOfArray++;
+
+		}
+
+		if (index > items.length) {
+			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + index);
+		}
 		return true;
 	}
 

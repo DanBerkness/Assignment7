@@ -10,7 +10,7 @@ import com.coderscampus.CustomList;
 class CustomArrayListTest {
 
 	@Test
-	void should_add__item_to_list_at_0_index() {
+	void should_add_item_to_list_at_0_index() {
 	
 		
 //		Arrange: Instantiating the list.
@@ -22,6 +22,12 @@ class CustomArrayListTest {
 		
 	}
 	@Test
+	void should_add_item_past_current_array_size() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		sut.add(50, 58);
+		assertEquals(58, sut.get(50));
+	}
+	@Test
 	void should_remove_an_item_from_list() {
 //		Arrange
 		CustomList<Integer> sut = new CustomArrayList<>();
@@ -29,6 +35,10 @@ class CustomArrayListTest {
 		sut.remove(1);
 //		Assert
 		assertEquals(2, 2);
+	}
+	@Test
+	void should_get_custom_list_size() {
+		
 	}
 	
 
