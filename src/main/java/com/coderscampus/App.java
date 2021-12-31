@@ -11,9 +11,13 @@ public class App {
 			int addCounter = 0;
 			for (int i = 0; i < 10; i++) {
 				myCustomList.add(addCounter++);
+				
 			}
+			myCustomList.add(0, 50);
 			
-			myCustomList.add(0, 39);
+			for (int i=0; i<myCustomList.getSize(); i++) {
+				System.out.println(myCustomList.get(i));
+			}
 			
 					
 			System.out.println("The new array size is " + myCustomList.getSize());
@@ -23,9 +27,6 @@ public class App {
 			System.out.println("---------------------");
 			System.out.println("The add method works " + myCustomList.add(12));
 			System.out.println("---------------------");
-			for (int i=0; i<myCustomList.getSize(); i++) {
-			    System.out.println(myCustomList.get(i));
-			}
 
 		}
 

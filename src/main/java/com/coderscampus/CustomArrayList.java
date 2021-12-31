@@ -13,7 +13,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T get(int index) {
+	public T get(int index) throws IndexOutOfBoundsException {
+		if(items.length < index) {
+			throw new IndexOutOfBoundsException(
+					"Index: " + index + "out of bounds for array size: " + items.length);
+		}
 
 		return (T) items[index];
 	}
@@ -28,28 +32,34 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		T displacedItem = null;
-
-		if (items[index] != null) {
-			displacedItem = (T) items[index];
-			items[index] = item;
-			item = displacedItem;
-			System.out.println(items[index]);
-			index++;
+		items[index] = item;
+		if (index > items.length) {
+			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + sizeOfArray);
 		}
-
 		if (sizeOfArray == items.length) {
 			items = Arrays.copyOf(items, items.length * 2);
-			items[index] = item;
-			sizeOfArray++;
-
+			
 		}
 
-		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + index);
+//		if (items[index] != null) {
+//			displacedItem = (T) items[index];
+//			items[index] = item;
+//			item = displacedItem;
+//			items[index + 1] = item;
+//			index++;
+//		
+//		}
+
+		if (items[index] != null) {
+			for (int i = sizeOfArray + 1; i >= index; i--) {
+				items[i + 1] = items[i];
+			}
+			
 		}
+		sizeOfArray++;
 		return true;
 	}
 
