@@ -35,7 +35,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		items[index] = item;
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + sizeOfArray);
 		}
@@ -59,6 +58,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 			}
 			
 		}
+		items[index] = item;
 		sizeOfArray++;
 		return true;
 	}
