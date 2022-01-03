@@ -14,12 +14,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
-		if(items.length < index) {
-			throw new IndexOutOfBoundsException(
-					"Index: " + index + "out of bounds for array size: " + items.length);
+		if (items.length < index) {
+			throw new IndexOutOfBoundsException("Index: " + index + "out of bounds for array size: " + items.length);
 		}
 
 		return (T) items[index];
+
 	}
 
 	@Override
@@ -38,25 +38,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + sizeOfArray);
 		}
+
 		if (sizeOfArray == items.length) {
 			items = Arrays.copyOf(items, items.length * 2);
-			
-		}
 
-//		if (items[index] != null) {
-//			displacedItem = (T) items[index];
-//			items[index] = item;
-//			item = displacedItem;
-//			items[index + 1] = item;
-//			index++;
-//		
-//		}
+		}
 
 		if (items[index] != null) {
 			for (int i = sizeOfArray + 1; i >= index; i--) {
 				items[i + 1] = items[i];
 			}
-			
+
 		}
 		items[index] = item;
 		sizeOfArray++;
@@ -65,8 +57,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+		T removedItem = (T) items[index];
+		items[index] = null;
+		for (int i = index; i < sizeOfArray; i++) {
+			items[i] = items[i + 1];
+		}
+		sizeOfArray--;
+		return removedItem;
 	}
 
 }
