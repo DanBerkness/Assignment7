@@ -12,10 +12,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return sizeOfArray;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
 		if (items.length < index) {
-			throw new IndexOutOfBoundsException("Index: " + index + "out of bounds for array size: " + items.length);
+			throw new IndexOutOfBoundsException("Index: " + index + " out of bounds for array size: " + items.length);
 		}
 
 		return (T) items[index];
@@ -32,7 +33,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		if (index > items.length) {
@@ -57,6 +58,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
+		@SuppressWarnings("unchecked")
 		T removedItem = (T) items[index];
 		items[index] = null;
 		for (int i = index; i < sizeOfArray; i++) {

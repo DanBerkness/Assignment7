@@ -4,10 +4,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.coderscampus.App;
 import com.coderscampus.CustomArrayList;
 import com.coderscampus.CustomList;
 
 class CustomArrayListTest {
+	@Test
+	void should_test_get_method_works() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			sut.add(i);
+		}
+		assertEquals(0, sut.get(0));
+	}
+
+//	@Test
+//	void get_method_should_throw_oob_exception() {
+//		Object[] items = new Object[10];
+//		CustomList<Integer> sut = new CustomArrayList<>();
+//		int index = 0;
+//		for (index = 0; index < 10; index++) {
+//			sut.add(index);
+//		}
+//		assertEquals("Index: " + index + " out of bounds for array size: " + items.length, sut.get(13));
+//	}
 
 	@Test
 	void should_add_item_to_list_at_0_index() {
@@ -29,9 +49,7 @@ class CustomArrayListTest {
 
 		assertEquals(111, sut.get(10));
 	}
-	
-	
-	
+
 	@Test
 	void should_remove_an_item_from_list() {
 //		Arrange
@@ -56,4 +74,8 @@ class CustomArrayListTest {
 		assertEquals(4, sut.getSize());
 	}
 
+//	@Test
+//	void stuff_test() throws Exception {
+//
+//	}
 }
