@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
-	int largerSize = 20;
 	int sizeOfArray = 0;
 
 	@Override
@@ -37,7 +36,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Choose an index within bounds for array size: " + sizeOfArray);
+			throw new IndexOutOfBoundsException();
 		}
 
 		if (sizeOfArray == items.length) {

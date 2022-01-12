@@ -2,15 +2,16 @@ package com.example.project;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import java.util.Arrays;
 
-import com.coderscampus.App;
+import org.junit.jupiter.api.Test;
 import com.coderscampus.CustomArrayList;
 import com.coderscampus.CustomList;
+import com.coderscampus.Main;
 
 class CustomArrayListTest {
 	@Test
-	void should_test_get_method_works() {
+	void should_test_if_get_method_works() {
 		CustomList<Integer> sut = new CustomArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			sut.add(i);
@@ -18,50 +19,56 @@ class CustomArrayListTest {
 		assertEquals(0, sut.get(0));
 	}
 
-//	@Test
-//	void get_method_should_throw_oob_exception() {
-//		Object[] items = new Object[10];
-//		CustomList<Integer> sut = new CustomArrayList<>();
-//		int index = 0;
-//		for (index = 0; index < 10; index++) {
-//			sut.add(index);
-//		}
-//		assertEquals("Index: " + index + " out of bounds for array size: " + items.length, sut.get(13));
-//	}
-
+	@Test
+	void should_test_for_failure_in_get_method() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			sut.add(i);
+		}
+	
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(20));
+	
+	}
+	@Test
+	void doubling_array_test() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 11; i++) {
+			sut.add(i);
+		}
+		assertEquals(20, sut.getSize());
+	}
 	@Test
 	void should_add_item_to_list_at_0_index() {
-
-		CustomList<Integer> sut = new CustomArrayList<>();
-
-		sut.add(0, 10);
-
-		assertEquals(10, sut.get(0));
-	}
-
-	@Test
-	void should_add_item_to_list_at_10_index() {
 		CustomList<Integer> sut = new CustomArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			sut.add(i);
 		}
-		sut.add(10, 111);
-
-		assertEquals(111, sut.get(10));
+		sut.add(0, 1);
+		assertEquals(1, sut.get(0));
 	}
 
+	
+
 	@Test
-	void should_remove_an_item_from_list() {
-//		Arrange
+	void should_remove_an_item_from_list_at_zeroth() {
 		CustomList<Integer> sut = new CustomArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			sut.add(i);
 		}
-//		Act
 		sut.add(33);
 		sut.remove(0);
-//		Assert
 		assertEquals(1, sut.get(0));
+	}
+
+	@Test
+	void should_remove_item_from_list_at_eleventh() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 11; i++) {
+			sut.add(i);
+		}
+		sut.add(11, 0);
+
+		assertEquals(0, sut.get(11));
 	}
 
 	@Test
@@ -74,8 +81,13 @@ class CustomArrayListTest {
 		assertEquals(4, sut.getSize());
 	}
 
-//	@Test
-//	void stuff_test() throws Exception {
-//
-//	}
+	@Test
+	void should_get_custom_list_size_after_doubling() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+		for (int i = 0; i < 20; i++) {
+			sut.add(i);
+		}
+		assertEquals(20, sut.getSize());
+	}
+
 }
