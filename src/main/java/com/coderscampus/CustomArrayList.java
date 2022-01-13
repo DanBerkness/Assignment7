@@ -30,8 +30,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 		items[sizeOfArray] = item;
 		sizeOfArray++;
 		return true;
-	}
-
+	} 
+		
 	
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {

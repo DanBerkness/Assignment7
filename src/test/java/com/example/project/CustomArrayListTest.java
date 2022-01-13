@@ -22,13 +22,18 @@ class CustomArrayListTest {
 	@Test
 	void should_test_for_failure_in_get_method() {
 		CustomList<Integer> sut = new CustomArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			sut.add(i);
-		}
-	
+
 		assertThrows(IndexOutOfBoundsException.class, () -> sut.get(20));
 	
 	}
+	@Test
+	void should_test_for_failure_in_add_method() {
+		CustomList<Integer> sut = new CustomArrayList<>();
+
+		assertThrows(IndexOutOfBoundsException.class, () -> sut.add(20, 20));
+		
+	}
+	
 	@Test
 	void doubling_array_test() {
 		CustomList<Integer> sut = new CustomArrayList<>();
